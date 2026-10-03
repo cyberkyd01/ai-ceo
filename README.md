@@ -8,6 +8,8 @@ gaps, prepares listings for the platforms that matter, tracks money, and reflect
 It runs on Claude (`claude-opus-5` by default) through the official Anthropic SDK, with Anthropic's
 server-side web search for research and Claude Code in headless mode as its engineer.
 
+> **Deploying to a server?** Follow the step-by-step VPS guide: **[DEPLOY.md](DEPLOY.md)**
+
 ## What it does each cycle
 
 ```
@@ -69,6 +71,7 @@ ai-ceo metric signups 42                          # feed it numbers it cannot fe
 `--dry-run` on any command uses a fake model, so you can see the plumbing without spending anything.
 
 For unattended operation use cron or launchd, for example `0 */12 * * * cd /path && .venv/bin/ai-ceo run`.
+On a Linux server, [DEPLOY.md](DEPLOY.md) sets this up with systemd timers under a dedicated, sandboxed user.
 
 ## Autonomy policy
 
