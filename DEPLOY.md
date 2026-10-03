@@ -161,11 +161,13 @@ This step only adds packages and never upgrades or removes anything.
 
 ```bash
 sudo bash -euo pipefail <<'EOF'
+export DEBIAN_FRONTEND=noninteractive NEEDRESTART_SUSPEND=1   # additive only: needrestart must not restart other services
 source /etc/ai-ceo/deploy.conf
 cd /tmp
 export DEBIAN_FRONTEND=noninteractive
 apt-get update -qq
-apt-get install -y --no-install-recommends git curl ca-certificates python3 python3-venv openssh-client xz-utils sudo
+MISSING_PKGS=""; for p in git curl ca-certificates python3 python3-venv openssh-client xz-utils sudo; do dpkg-query -W -f='${Status}' "$p" 2>/dev/null | grep -q 'ok installed' || MISSING_PKGS="$MISSING_PKGS $p"; done
+if [ -n "$MISSING_PKGS" ]; then apt-get install -y --no-install-recommends $MISSING_PKGS; fi   # only what's missing - never upgrades installed packages
 echo "OK: $(git --version), $(python3 -V)"
 EOF
 ```
