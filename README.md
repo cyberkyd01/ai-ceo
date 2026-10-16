@@ -115,3 +115,11 @@ Tests: `pytest` (no network or API key needed).
 Defaults to `claude-opus-5` with adaptive thinking at `high` effort and Anthropic's server-side
 refusal fallbacks enabled (`fallbacks: "default"`), so a safety decline is re-run on a fallback model
 inside the same call. Change with `AI_CEO_MODEL` and `AI_CEO_EFFORT`.
+
+---
+
+## ⭐ Support
+
+Please give stars and if possible Buy me a coffee (USDT-TRC20) - `TA216k3WgWTrKnUKxZrSDNGzSJj3eHtEcH`
+
+Telegram: [@Cyberkyd](https://t.me/Cyberkyd)
